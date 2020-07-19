@@ -1,0 +1,223 @@
+// Colors
+$paleBlue: hsl(243, 100%, 93%);
+$grayishBlue: hsl(229, 7%, 55%);
+$darkBlue: hsl(228, 56%, 26%);
+$veryDarkBlue: hsl(229, 57%, 11%);
+
+$gradient: linear-gradient(to right, hsl(6, 100%, 80%), hsl(335, 100%, 65%));
+
+@mixin size($width, $height) {
+  height: $height;
+  width: $width;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.content {
+  align-items: center;
+  background: url(../images/bg-desktop.png) no-repeat bottom;
+  background-color: $veryDarkBlue;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  max-width: 1440px;
+
+  .cards {
+    align-items: flex-end;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    @include size(1000px, 200px);
+
+    .card-1 {
+      background-color: $darkBlue;
+      border-radius: 10px 100px 10px 10px;
+      display: flex;
+      flex-direction: column;
+      margin-right: 32px;
+      min-width: 350px;
+      overflow: hidden;
+      padding: 50px;
+      @include size(350px, 200px);
+
+      .logo {
+        margin-bottom: 33px;
+      }
+
+      .icons {
+        display: flex;
+        margin-bottom: 0px;
+
+        .icon {
+          align-items: center;
+          background-color: $veryDarkBlue;
+          border-radius: 10px;
+          display: flex;
+          justify-content: center;
+          margin-right: 10px;
+
+          @include size(48px, 48px);
+
+          .icon-document {
+            @include size(20px, 24px);
+          }
+
+          .icon-folder {
+            @include size(24px, 20px);
+          }
+
+          .icon-upload {
+            @include size(24px, 16px);
+          }
+        }
+      }
+    }
+
+    .card-2 {
+      background-color: $darkBlue;
+      border-radius: 10px 10px 10px 10px;
+      min-width: 350px;
+      position: relative;
+      @include size(540px, 154px);
+
+      .card-2-text {
+        color: #fff;
+        margin-left: 50px;
+        margin-top: 50px;
+        font-family: "Raleway", sans-serif;
+
+        span {
+          font-weight: 700;
+        }
+      }
+
+      .ballon {
+        background-color: #fff;
+        border-radius: 10px 10px 0px 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        right: 10%;
+        top: -44px;
+        @include size(180px, 72px);
+
+        .text {
+          font-family: "Raleway", sans-serif;
+          font-weight: 700;
+          font-size: 14px;
+          text-align: center;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: $grayishBlue;
+          width: 100%;
+
+          .big-text {
+            color: $veryDarkBlue;
+            font-size: 40px;
+            margin-right: 10px;
+          }
+        }
+
+        .triangle {
+          border: 25px solid;
+          border-color: transparent #fff transparent transparent;
+          position: absolute;
+          bottom: -15px;
+          right: 0;
+        }
+      }
+
+      .card-statusbar {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+
+        .statusbar {
+          background-color: $veryDarkBlue;
+          border-radius: 10px;
+          margin-top: 10px;
+          margin-left: 50px;
+          display: flex;
+          align-items: center;
+          @include size(80%, 20px);
+          box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+
+          .statusbar-percent {
+            width: 70%;
+            height: 16px;
+            border-radius: 10px;
+            background: $gradient;
+            position: relative;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin-left: 2px;
+
+            .circle {
+              width: 14px;
+              height: 14px;
+              background-color: #fff;
+              border-radius: 50%;
+            }
+          }
+        }
+
+        .statusbar-text {
+          margin-top: 5px;
+          width: 80%;
+          margin-left: 50px;
+          color: $paleBlue;
+          font-family: "Raleway", sans-serif;
+          font-weight: 700;
+          display: flex;
+          justify-content: space-between;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 960px) {
+  .content {
+    // width: 100%;
+    height: 100vh;
+    background-color: $veryDarkBlue;
+    background: url(../images/bg-mobile.png);
+    background-size: cover;
+
+    .cards {
+      align-items: center;
+      flex-direction: column;
+      @include size(100%, 100%);
+
+      .card-1 {
+        margin: 0 0 30px 0;
+        width: 80%;
+      }
+
+      .card-2 {
+        margin: 0;
+        width: 80%;
+
+        .ballon {
+          position: absolute;
+          bottom: 0;
+          top: 75%;
+          right: calc(100% / 2 - 90px);
+          border-radius: 10px;
+
+          .triangle {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
